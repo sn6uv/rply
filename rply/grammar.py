@@ -72,7 +72,7 @@ class Grammar(object):
 
     def set_start(self):
         start = self.productions[1].name
-        self.productions[0] = Production(0, "S'", [start], ("right", 0), None)
+        self.productions[0] = Production(0, u"S'", [start], ("right", 0), None)
         self.nonterminals[start].append(0)
         self.start = start
 
@@ -136,7 +136,7 @@ class Grammar(object):
         for t in self.terminals:
             self.first[t] = [t]
 
-        self.first["$end"] = ["$end"]
+        self.first[u"$end"] = [u"$end"]
 
         for n in self.nonterminals:
             self.first[n] = []
@@ -156,7 +156,7 @@ class Grammar(object):
             self.follow[k] = []
 
         start = self.start
-        self.follow[start] = ["$end"]
+        self.follow[start] = [u"$end"]
 
         added = True
         while added:
