@@ -136,7 +136,7 @@ class Grammar(object):
         for t in self.terminals:
             self.first[t] = [t]
 
-        self.first["$end"] = ["$end"]
+        self.first[u"$end"] = [u"$end"]
 
         for n in self.nonterminals:
             self.first[n] = []
@@ -156,7 +156,7 @@ class Grammar(object):
             self.follow[k] = []
 
         start = self.start
-        self.follow[start] = ["$end"]
+        self.follow[start] = [u"$end"]
 
         added = True
         while added:

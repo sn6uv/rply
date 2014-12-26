@@ -318,8 +318,8 @@ class LRTable(object):
                 if p.getlength() == p.lr_index + 1:
                     if p.name == u"S'":
                         # Start symbol. Accept!
-                        st_action["$end"] = 0
-                        st_actionp["$end"] = p
+                        st_action[u"$end"] = 0
+                        st_actionp[u"$end"] = p
                     else:
                         laheads = p.lookaheads[st]
                         for a in laheads:
@@ -460,13 +460,13 @@ class LRTable(object):
                     s[n] = s1
                 gs.append(n)
                 s = s1
-        g = s.get("$end")
+        g = s.get(u"$end")
         if not g:
             if gs:
                 g = cls.lr0_closure(gs, add_count)
-                s["$end"] = g
+                s[u"$end"] = g
             else:
-                s["$end"] = gs
+                s[u"$end"] = gs
         return g
 
     @classmethod
@@ -532,7 +532,7 @@ class LRTable(object):
                 if a in grammar.terminals and a not in terms:
                     terms.append(a)
         if state == 0 and N == grammar.productions[0].prod[0]:
-            terms.append("$end")
+            terms.append(u"$end")
         return terms
 
     @classmethod
