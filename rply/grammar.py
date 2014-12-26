@@ -72,7 +72,7 @@ class Grammar(object):
 
     def set_start(self):
         start = self.productions[1].name
-        self.productions[0] = Production(0, "S'", [start], ("right", 0), None)
+        self.productions[0] = Production(0, u"S'", [start], ("right", 0), None)
         self.nonterminals[start].append(0)
         self.start = start
 

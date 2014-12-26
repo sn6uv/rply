@@ -316,7 +316,7 @@ class LRTable(object):
             st_goto = {}
             for p in I:
                 if p.getlength() == p.lr_index + 1:
-                    if p.name == "S'":
+                    if p.name == u"S'":
                         # Start symbol. Accept!
                         st_action["$end"] = 0
                         st_actionp["$end"] = p
