@@ -120,7 +120,7 @@ if rpython:
             return RuleRepr(rtyper)
 
         def method_matches(self, s_s, s_pos):
-            assert model.SomeString().contains(s_s)
+            assert model.SomeUnicodeString().contains(s_s)
             assert model.SomeInteger(nonneg=True).contains(s_pos)
 
             bk = getbookkeeper()
@@ -136,7 +136,7 @@ if rpython:
                     bk.getuniqueclassdef(rsre_core.StrMatchContext)
                 ),
                 bk.newlist(model.SomeInteger(nonneg=True)),
-                model.SomeString(),
+                model.SomeUnicodeString(),
                 model.SomeInteger(nonneg=True),
                 model.SomeInteger(nonneg=True),
                 model.SomeInteger(nonneg=True),
@@ -154,7 +154,7 @@ if rpython:
 
         def getattr(self, s_attr):
             if s_attr.is_constant() and s_attr.const == "name":
-                return model.SomeString()
+                return model.SomeUnicodeString()
             return super(SomeRule, self).getattr(s_attr)
 
     class __extend__(pairtype(SomeRule, SomeRule)):
