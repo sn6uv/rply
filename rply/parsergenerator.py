@@ -1,3 +1,4 @@
+from __future__ import unicode_literals
 import hashlib
 import json
 import os
@@ -316,10 +317,10 @@ class LRTable(object):
             st_goto = {}
             for p in I:
                 if p.getlength() == p.lr_index + 1:
-                    if p.name == u"S'":
+                    if p.name == "S'":
                         # Start symbol. Accept!
-                        st_action[u"$end"] = 0
-                        st_actionp[u"$end"] = p
+                        st_action["$end"] = 0
+                        st_actionp["$end"] = p
                     else:
                         laheads = p.lookaheads[st]
                         for a in laheads:
@@ -460,13 +461,13 @@ class LRTable(object):
                     s[n] = s1
                 gs.append(n)
                 s = s1
-        g = s.get(u"$end")
+        g = s.get("$end")
         if not g:
             if gs:
                 g = cls.lr0_closure(gs, add_count)
-                s[u"$end"] = g
+                s["$end"] = g
             else:
-                s[u"$end"] = gs
+                s["$end"] = gs
         return g
 
     @classmethod
@@ -532,7 +533,7 @@ class LRTable(object):
                 if a in grammar.terminals and a not in terms:
                     terms.append(a)
         if state == 0 and N == grammar.productions[0].prod[0]:
-            terms.append(u"$end")
+            terms.append("$end")
         return terms
 
     @classmethod
