@@ -1,3 +1,6 @@
+from __future__ import unicode_literals
+
+
 from rply.errors import ParserGeneratorError
 from rply.utils import iteritems
 
@@ -72,7 +75,7 @@ class Grammar(object):
 
     def set_start(self):
         start = self.productions[1].name
-        self.productions[0] = Production(0, u"S'", [start], ("right", 0), None)
+        self.productions[0] = Production(0, "S'", [start], ("right", 0), None)
         self.nonterminals[start].append(0)
         self.start = start
 
@@ -136,7 +139,7 @@ class Grammar(object):
         for t in self.terminals:
             self.first[t] = [t]
 
-        self.first[u"$end"] = [u"$end"]
+        self.first["$end"] = ["$end"]
 
         for n in self.nonterminals:
             self.first[n] = []
@@ -156,7 +159,7 @@ class Grammar(object):
             self.follow[k] = []
 
         start = self.start
-        self.follow[start] = [u"$end"]
+        self.follow[start] = ["$end"]
 
         added = True
         while added:
